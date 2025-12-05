@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajolote Mexicano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comfortaa', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+        }
+        header {
+            background: #000000;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .species {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .species div {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            width: 300px;
+        }
+        .species img {
+            width: 100%;
+            border-radius: 10px;
+            filter: grayscale(100%);
+            cursor: pointer;
+        }
+        footer {
+            background: #000000;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function openWindowWithIframe(url) {
+            const password = prompt("Introduce la contraseña:");
+            if (password === "CarletesGames") {
+                let win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                const iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = atob(url);
+                win.document.body.appendChild(iframe);
+            } else {
+                alert("Contraseña incorrecta.");
+            }
+        }
+
+        let clickCount = 0;
+        function countClicks(id) {
+            clickCount++;
+            if ((id === 'mexicano' && clickCount === 1) || 
+                (id === 'tigre' && clickCount === 2) || 
+                (id === 'mexicano' && clickCount === 3) || 
+                (id === 'arroyo' && clickCount === 4)) {
+                if (clickCount === 4) {
+                    openWindowWithIframe(btoa('about:blank'));
+                    clickCount = 0;
+                }
+            } else {
+                clickCount = 0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" style="max-width: 200px;">
+    </header>
+    <div class="container">
+        <h2>¿Qué es el Ajolote?</h2>
+        <p>El ajolote mexicano (Ambystoma mexicanum) es un anfibio único, conocido por su capacidad de regeneración y su aspecto característico. Se encuentra en peligro de extinción debido a la contaminación y la destrucción de su hábitat natural.</p>
+        
+        <h2>Importancia del Ajolote</h2>
+        <p>El ajolote es un animal de gran interés científico por su capacidad de regeneración de extremidades, órganos e incluso partes del cerebro y corazón. Además, es un indicador de la salud ambiental de los cuerpos de agua donde habita.</p>
+        
+        <h2>Especies de Ajolote</h2>
+        <div class="species">
+            <div>
+                <img src="ajolote_mexicano.jpg" alt="Ajolote Mexicano" onclick="countClicks('mexicano')">
+                <h3>Ajolote Mexicano</h3>
+                <p>Es la especie más conocida y originaria de los lagos de Xochimilco.</p>
+            </div>
+            <div>
+                <img src="ajolote_tigre.jpg" alt="Ajolote Tigre" onclick="countClicks('tigre')">
+                <h3>Ajolote Tigre</h3>
+                <p>Se encuentra en Norteamérica y tiene una apariencia moteada.</p>
+            </div>
+            <div>
+                <img src="ajolote_pintado.jpg" alt="Ajolote de Arroyo" onclick="countClicks('arroyo')">
+                <h3>Ajolote de Arroyo</h3>
+                <p>Habita en ríos y arroyos de México, adaptándose a diferentes ambientes.</p>
+            </div>
+            <div>
+                <img src="ajolote_lago.jpg" alt="Ajolote del Lago Pátzcuaro">
+                <h3>Ajolote del Lago Pátzcuaro</h3>
+                <p>Endémico del lago de Pátzcuaro, es una especie en peligro crítico de extinción.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Información sobre el Ajolote Mexicano | Proyecto de conservación
+    </footer>
+</body>
+</html>
